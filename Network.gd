@@ -22,17 +22,11 @@ func _ready() -> void:
 #	client_connection_timeout_timer.one_shot = true
 #
 #	client_connection_timeout_timer.connect("timeout", self, "_client_connection_timeout")
-	
-	if OS.get_name() == "Windows":
-		ip_address = IP.get_local_addresses()[3]
-	elif OS.get_name() == "Android":
-		ip_address = IP.get_local_addresses()[0]
-	else:
-		ip_address = IP.get_local_addresses()[3]
-	
-	for ip in IP.get_local_addresses():
-		if ip.begins_with("192.168.") and not ip.ends_with(".1"):
-			ip_address = ip
+
+	var local_adresses = IP.get_local_addresses()
+	for ip in local_adresses:
+		if ip.find(":") == -1: # let's not print ipv6 ips
+			ip_address = ip_address + ip + "\n"
 	
 	get_tree().connect("connected_to_server", self, "_connected_to_server")
 	get_tree().connect("server_disconnected", self, "_server_disconnected")
