@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 Network="*res://Network.gd"
 Global="*res://Global.gd"
+Players="*res://Players.tscn"
 
 [display]
 

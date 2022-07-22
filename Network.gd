@@ -7,7 +7,6 @@ var server = null
 var client = null
 
 var ip_address = ""
-#var current_player_username = ""
 
 #var client_connected_to_server = false
 
@@ -25,7 +24,7 @@ func _ready() -> void:
 
 	var local_adresses = IP.get_local_addresses()
 	for ip in local_adresses:
-		if ip.find(":") == -1: # let's not print ipv6 ips
+		if (ip.find(":") == -1) and not (ip.begins_with("192.168.") and ip.ends_with(".1")): # let's not print ipv6 ips, nor virtual wifi ip
 			ip_address = ip_address + ip + "\n"
 	
 	get_tree().connect("connected_to_server", self, "_connected_to_server")
@@ -48,8 +47,8 @@ func join_server() -> void:
 #	if get_tree().has_network_peer():
 #		get_tree().network_peer = null
 
-func _connected_to_server() -> void:
-	print("Successfully connected to the server")
+#func _connected_to_server() -> void:
+#	print("Successfully connected to the server")
 	
 #	client_connected_to_server = true
 

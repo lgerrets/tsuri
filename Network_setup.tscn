@@ -18,9 +18,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -230.5
+margin_left = -397.0
 margin_top = -314.0
-margin_right = 230.5
+margin_right = 64.0
 margin_bottom = -224.0
 custom_fonts/font = ExtResource( 2 )
 text = "Create server"
@@ -47,20 +47,31 @@ margin_top = 78.0
 margin_right = 92.5
 margin_bottom = 102.0
 custom_fonts/font = ExtResource( 3 )
-text = "Enter IP adress"
+text = "Enter IP address"
 align = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Device_ip_address" type="Label" parent="CanvasLayer"]
+[node name="Device_ip_address" type="Label" parent="Multiplayer_configure"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -370.0
-margin_bottom = -356.0
+margin_bottom = -349.0
 custom_fonts/font = ExtResource( 3 )
 align = 1
 valign = 1
+
+[node name="N_players_items" type="ItemList" parent="Multiplayer_configure"]
+margin_left = 1104.0
+margin_top = 243.0
+margin_right = 1192.0
+margin_bottom = 302.0
+custom_fonts/font = ExtResource( 3 )
+items = [ "1 player", null, false, "2 players", null, false ]
+max_text_lines = 2
+auto_height = true
+__meta__ = {
+"_editor_description_": ""
+}
 
 [connection signal="pressed" from="Multiplayer_configure/Create_server" to="." method="_on_Create_server_pressed"]
 [connection signal="pressed" from="Multiplayer_configure/Join_server" to="." method="_on_Join_server_pressed"]
